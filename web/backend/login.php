@@ -18,7 +18,19 @@ $password=  md5($_POST["password"]);
 
 	require_once "Database.php";
 	$db = new Database();
-
+	
+	
+	//Check if email is valid
+	if (!filter_var($email, FILTER_SANITIZE_EMAIL)) {
+		$data = array(
+			"error"=>1,
+			"errorMessage"=> "You have entered an invalid email",
+			"report"=>"emailInvalid"
+		);
+		echo json_encode($data,true);
+	}
+	
+	
 	//selecting from db
 	$users = $db->select("SELECT * FROM users WHERE email ='".$email."';");
 	if ($users == 0) {
