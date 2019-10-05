@@ -33,6 +33,44 @@ let fullname = document.querySelector("input[name='fullname']").value;
 let submitBtn = document.querySelector("input[type='submit']");
 let display = document.querySelector("span[class='display']");
 
+ //Added form validation
+ 
+if (fullname==null || fullname==""){  
+  alert("Full name can't be blank");  
+  return false;  
+}
+
+function checkpass()
+{
+if(document.password.value!=document.confirm.value)
+{
+alert('Password and Confirm Password field does not match');
+document.confirm.focus();
+return false;
+}
+return true;
+} else if(password.length<6){  
+  alert("Password must be at least 6 characters long.");  
+  return false;  
+  } 
+}  
+
+
+
+
+function ValidateEmail(email) 
+{
+ if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+  {
+    return (true)
+  }
+    alert("You have entered an invalid email address!")
+    return (false)
+}
+
+ //End of form validation
+ 
+ 
 let doReg = sendRequest(theRegistrationUrl,{password:password,email:email,confirm:confirm,fullname:fullname});
 doReg.then(function(data){
   if (data.error == 1) {
