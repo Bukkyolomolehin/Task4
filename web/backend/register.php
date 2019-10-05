@@ -8,6 +8,19 @@ if (empty($_POST)) {
 	echo json_encode($data,true);
 }
 
+
+//Added email validation
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+	$data = array(
+		"error"=>1,
+		"errorMessage"=> "You have entered an invalid email",
+		"report"=>"emailInvalid"
+	);
+	echo json_encode($data,true);
+	exit();
+}
+
+
 else {
 	$email = $_POST['email'];
 	$surname = $_POST['surname'];
