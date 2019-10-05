@@ -17,6 +17,20 @@ $email = $_POST['email'];
 
 $db = new Database();
 
+	
+//Added email validation
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+	$data = array(
+		"error"=>1,
+		"errorMessage"=> "You have entered an invalid email",
+		"report"=>"emailInvalid"
+	);
+	echo json_encode($data,true);
+	exit();
+}
+
+	
+	
 	//selecting from db
 	$users = $db->select("SELECT * FROM users WHERE email ='".$email."';");
 	if ($users != 0) {
