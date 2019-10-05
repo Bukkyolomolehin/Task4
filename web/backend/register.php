@@ -41,7 +41,7 @@ if(!preg_match("/^([a-zA-Z' ]+)$/",$fullname)){
 	else if (strlen($fullname) < 6) {
 		$data = array(
 			"error" => 1,
-			"errorMessage" => "Your fullname is too short...A combination of 6 characters minimum is required",
+			"errorMessage" => "Your fullname is too short, a minimum combination of 6 characters is required.",
 			"report"=> "passwordTooShort"
 		);
 		echo json_encode($data,true);
