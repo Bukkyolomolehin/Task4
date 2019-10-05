@@ -36,7 +36,7 @@ $password=  md5($_POST["password"]);
 	if ($users == 0) {
 		$data = array(
 			"error"=>1,
-			"errorMessage" => "Either Email is Incorrect or Account Not Exists",
+			"errorMessage" => "Either Email is Incorrect or Account Does Not Exists",
 			"report" =>"accountNotExists"
 		); 
 		echo json_encode($data,true);
