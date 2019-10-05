@@ -29,6 +29,18 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 	exit();
 }
 
+if(!preg_match("/^([a-zA-Z' ]+)$/",$fullname)){
+	$data = array(
+		"error"=>1,
+		"errorMessage"=> "Invalid name given, enter full name",
+		"report"=>"fullnameInvalid"
+	);
+	echo json_encode($data,true);
+	exit();
+}
+
+	
+	
 	
 	
 	//selecting from db
